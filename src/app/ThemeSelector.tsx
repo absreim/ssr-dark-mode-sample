@@ -24,6 +24,7 @@ const ThemeSelector: FC = () => {
           onChange={() => {
             setThemeOptionName(name as ThemeOptionName);
             setLsThemeOptionName(name as ThemeOptionName);
+            document.cookie = `theme=${name as ThemeOptionName}; path=/; max-age=31536000`;
             (
               window as Window & typeof globalThis & { syncTheme: () => void }
             ).syncTheme();
@@ -35,6 +36,6 @@ const ThemeSelector: FC = () => {
       ))}
     </ButtonGroup>
   );
-}
+};
 
 export default ThemeSelector;

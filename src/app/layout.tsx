@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import "./style.scss";
 import Script from "next/script";
+import { cookies } from "next/headers";
 
 export const metadata: Metadata = {
   title: "ssr-dark-mode-example",
@@ -8,24 +9,8 @@ export const metadata: Metadata = {
     "Educational sample code for dark mode with Next.js and Bootstrap",
 };
 
-const darkModeInitScript = `
-  let currentTheme = "auto";
-  const storedTheme = localStorage.getItem("theme");
-  if (["dark", "light"].includes(storedTheme)) {
-    currentTheme = storedTheme;
-  }
-
-  if (currentTheme === "auto") {
-    document.documentElement.setAttribute(
-      "data-bs-theme",
-      window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light",
-    );
-  } else {
-    document.documentElement.setAttribute("data-bs-theme", currentTheme);
-  }
-`;
+const cookieStore = await cookies();
+const theme = cookieStore.get("theme")?.value ?? "system";
 
 export default function RootLayout({
   children,
@@ -33,12 +18,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{ __html: darkModeInitScript }}
-        ></script>
-      </head>
+    <html lang="en" data-bs-theme={theme} suppressHydrationWarning>
       <body>
         <Script src="/dark-mode.js" strategy="beforeInteractive" />
         {children}
