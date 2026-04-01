@@ -1,9 +1,8 @@
-import ThemeSelectorContainer from "@/app/ThemeSelectorContainer";
 import { Card, CardBody, CardTitle, CardText } from "react-bootstrap";
 
 export default function Home() {
   return (
-    <main>
+    <main className="py-2">
       <Card>
         <CardBody>
           <CardTitle>Card Title</CardTitle>
@@ -13,7 +12,6 @@ export default function Home() {
           </CardText>
         </CardBody>
       </Card>
-      <ThemeSelectorContainer />
     </main>
   );
 }

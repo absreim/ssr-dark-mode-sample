@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import "./style.scss";
 import Script from "next/script";
+import AppBar from "@/components/AppBar";
+import Container from "react-bootstrap/Container";
 
 export const metadata: Metadata = {
   title: "ssr-dark-mode-example",
@@ -41,7 +43,8 @@ export default function RootLayout({
       </head>
       <body>
         <Script src="/dark-mode.js" strategy="beforeInteractive" />
-        {children}
+        <AppBar />
+        <Container>{children}</Container>
       </body>
     </html>
   );
