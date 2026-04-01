@@ -1,1 +1,28 @@
 @import "bootstrap/scss/bootstrap";
+
+// --- Navbar ---
+
+.custom-navbar {
+  background-color: $blue-600;
+  @media (forced-colors) {
+    background-color: Canvas;
+  }
+
+  .navbar-brand {
+    color: $white;
+  }
+
+  .nav-link {
+    color: rgba($white, .85);
+
+    &:hover,
+    &:focus {
+      color: $white;
+    }
+
+    &.active {
+      font-weight: 600;
+      color: $white;
+    }
+  }
+}

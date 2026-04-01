@@ -14,7 +14,7 @@ const DarkModeDropdown = dynamic(() => import("./DarkModeDropdown"), {
 
 const AppBar: FC = () => {
   return (
-    <Navbar bg="primary" data-bs-theme="dark">
+    <Navbar className="custom-navbar">
       <Container>
         <div className="d-flex flex-row">
           <Navbar.Brand>Navbar Brand Text</Navbar.Brand>
